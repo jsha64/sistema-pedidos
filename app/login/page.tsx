@@ -13,7 +13,7 @@ export default function LoginPage() {
     setError("");
     try {
       const newUser = await registerUser(email, password);
-      setUser({ email: newUser.email });
+      setUser({ email: newUser.user.email || ""});
     } catch (err: any) {
       setError(err.message);
     }
@@ -23,7 +23,7 @@ export default function LoginPage() {
     setError("");
     try {
       const loggedInUser = await loginUser(email, password);
-      setUser({ email: loggedInUser.email });
+      setUser({ email: loggedInUser.user.email || ""});
     } catch (err: any) {
       setError(err.message);
     }
