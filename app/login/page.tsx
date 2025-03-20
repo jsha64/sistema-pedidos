@@ -31,8 +31,8 @@ export default function LoginPage() {
 
   const handleLogout = async () => {
     try {
-      await logoutUser();
-      setUser(null);
+      await fetch("/api/auth/logout", { method: "POST" });
+      setUser(null); // Eliminar usuario del estado
     } catch (err: any) {
       setError(err.message);
     }
@@ -40,7 +40,7 @@ export default function LoginPage() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
-      <h1 className="text-2xl font-bold mb-4">Autenticación con Firebase</h1>
+      <h1 className="text-2xl text-black font-bold mb-4">Autenticación con Firebase</h1>
       {user ? (
         <div className="bg-white p-4 shadow-md rounded-md">
           <p className="text-green-600">Bienvenido, {user.email}</p>
@@ -58,14 +58,14 @@ export default function LoginPage() {
             placeholder="Correo electrónico"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="border p-2 rounded-md w-full mb-2"
+            className="border text-black p-2 rounded-md w-full mb-2"
           />
           <input
             type="password"
             placeholder="Contraseña"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="border p-2 rounded-md w-full mb-2"
+            className="border text-black p-2 rounded-md w-full mb-2"
           />
           {error && <p className="text-red-500">{error}</p>}
           <button
