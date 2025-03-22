@@ -7,7 +7,7 @@ export default function LoginPage() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
-  const [user, setUser] = useState<{ email: string } | null>(null);
+  const [user, setUser] = useState<{ id?: string; email: string } | null>(null);
 
   const handleRegister = async () => {
     setError("");
@@ -23,7 +23,13 @@ export default function LoginPage() {
     setError("");
     try {
       const loggedInUser = await loginUser(email, password);
-      setUser({ email: loggedInUser.user.email || ""});
+
+      const res = await fetch("/api/auth/me");
+      if(!res.ok) throw new Error("Error obtener el usuario");
+
+      const data = await res.json();
+
+      setUser({ id: data.id, email: data.email });
     } catch (err: any) {
       setError(err.message);
     }

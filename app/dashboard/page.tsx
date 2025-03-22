@@ -1,11 +1,19 @@
 "use client";
-import { useEffect, useState } from "react";
+
+import { useAuth } from "@/lib/AuthContext";
+import { Order } from "@prisma/client";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+
+type UserInfo = {
+  id: string;
+  email: string;
+};
 
 export default function Dashboard() {
   const router = useRouter();
-  const [userEmail, setUserEmail] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+  const { user, loading } = useAuth() as { user: UserInfo | null; loading: boolean };
+  const [orders, setOrders] = useState<Order[]>([]);
   
   const handleLogout = async () => {
     await fetch("/api/auth/logout", { method: "POST" });
@@ -13,31 +21,41 @@ export default function Dashboard() {
   }
   
   useEffect(() => {
-    const checkAuth = async () => {
+    if (!loading && !user) {
+      router.push("/login"); // Redirige si no está autenticado
+    }
+
+    const fetchOrders = async () => {
       try {
-        const res = await fetch("/api/auth/me");
-        if (!res.ok) throw new Error("No autenticado");
+        const res = await fetch(`/api/orders?userId=${user?.id}`);
+        if (!res.ok) throw new Error("Error al obtener pedidos");
 
         const data = await res.json();
-        setUserEmail(data.email);
+        setOrders(data);
       } catch (error) {
-        router.push("/login"); // Redirige si no hay sesión válida
-      } finally {
-        setLoading(false);
+        console.error(error);
       }
     };
 
-    checkAuth();
-  }, [router]);
+    if (user?.id) {
+      fetchOrders();
+    }
+  }, [user, loading, router]);
 
   if (loading) return <p>Cargando...</p>;
-  if (!userEmail) return null;
-
+  if (!user) return <p>No estás autenticado</p>;
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold">Bienvenido, {userEmail}</h1>
-      <p>Este es tu panel de usuario.</p>
+      <h1 className="text-2xl font-bold">Bienvenido, {user.email}</h1>
+      <h2 className="text-xl font-semibold mt-4">Tus pedidos:</h2>
+      <ul>
+        {orders.map((order: Order) => (
+          <li key={order.id} className="border p-2 mt-2 rounded">
+            Pedido ID: {order.id} - Estado: {order.status}
+          </li>
+        ))}
+      </ul>
       <button
       onClick={handleLogout}
       className="mt-4 bg-red-500 text-white px-4 py-2 rounded-md"

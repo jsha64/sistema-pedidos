@@ -14,7 +14,7 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
+  id        String      @id @default(uuid())
   name      String
   email     String   @unique
   password  String
@@ -25,7 +25,7 @@ model User {
 }
 
 model Restaurant {
-  id        Int      @id @default(autoincrement())
+  id        String      @id @default(uuid())
   name      String
   address   String?
   createdAt DateTime @default(now())
@@ -35,9 +35,9 @@ model Restaurant {
 }
 
 model Product {
-  id           Int        @id @default(autoincrement())
+  id           String        @id @default(uuid())
   restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
-  restaurantId Int
+  restaurantId String
   name         String
   description  String?
   price        Float
@@ -48,11 +48,11 @@ model Product {
 }
 
 model Order {
-  id           Int        @id @default(autoincrement())
+  id           String        @id @default(uuid())
   user         User?      @relation(fields: [userId], references: [id])
-  userId       Int?
+  userId       String?
   restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
-  restaurantId Int
+  restaurantId String
   total        Float
   status       String     @default("pending")
   createdAt    DateTime   @default(now())
@@ -61,11 +61,11 @@ model Order {
 }
 
 model OrderItem {
-  id        Int     @id @default(autoincrement())
+  id        String  @id @default(uuid())
   order     Order   @relation(fields: [orderId], references: [id])
-  orderId   Int
+  orderId   String
   product   Product @relation(fields: [productId], references: [id])
-  productId Int
+  productId String
   quantity  Int
   subtotal  Float
 }
