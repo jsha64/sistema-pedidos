@@ -1,6 +1,10 @@
-
-export default function Header() {
+export default function Header({ LinkComponent }) {
   return (
-    <h1>Sistema de Pedidos</h1>
-  )
+    <header>
+      <h1>Sistema de Pedidos</h1>
+      <nav>
+        <LinkComponent to="/">Inicio</LinkComponent>
+      </nav>
+    </header>
+  );
 }
