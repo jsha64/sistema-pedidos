@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import { ProductCard } from "../components/ProductCard";
 import { productos } from "../data/productos";
+import "../styles/product-card.css";
 
 export const Inicio = () => {
     return (
@@ -9,7 +10,7 @@ export const Inicio = () => {
           <Header LinkComponent={Link} />
           <h2>Página de inicio</h2>
 
-          <div>
+          <div className="product-list">
             {productos.map(p =>(
               <ProductCard
                 key={p.id}
