@@ -1,6 +1,13 @@
+import { useState } from "react";
 import AppRoutes from "./routes/AppRoutes";
 
 export default function App(){
-  return <AppRoutes />;
+  const [carrito, setCarrito] = useState([]);
+
+  return (
+    <>
+      <AppRoutes carrito={carrito} setCarrito={setCarrito} />
+    </>
+  );
 };
 

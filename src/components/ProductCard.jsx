@@ -1,4 +1,6 @@
-export const ProductCard = ({ name, price, /*image*/ description }) => {
+export const ProductCard = ({ name, price, /*image*/ description, onAdd,
+  pedidoConfirmacion }) => {
+  
   return (
     <div className="product-card">
       {/* <img src={image} alt={name} className="product-image" /> */}
@@ -8,6 +10,13 @@ export const ProductCard = ({ name, price, /*image*/ description }) => {
       <p>{description}</p>
 
       <strong>${price}</strong>
+
+      <button className="btn-agregar" onClick={() => {
+          onAdd();             // Agrega al carrito
+          pedidoConfirmacion(); // Muestra modal
+        }}>
+        Agregar al pedido
+      </button>
     </div>
   );
 }
