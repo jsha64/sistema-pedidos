@@ -1,4 +1,4 @@
-import Header from "../components/Header";
+import Nav from "../components/Nav";
 import { useState } from "react";
 import { ProductCard } from "../components/ProductCard";
 import { productos } from "../data/productos";
@@ -14,7 +14,7 @@ export const Inicio = ({ carrito, setCarrito }) => {
     setTimeout(() => {
       setModalVisible(false)
       setProductoAgregado(null);
-    }, 1000);
+    }, 5000);
   };
 
   const handleAdd = (producto) => {
@@ -30,7 +30,7 @@ export const Inicio = ({ carrito, setCarrito }) => {
             message="✔ Producto agregado al carrito"
             product={productoAgregado}
         />
-          <Header carrito={carrito.length} />
+          <Nav carrito={carrito.length} />
           <h2>Página de inicio</h2>
           <div className="product-list">
             {productos.map((p) =>(

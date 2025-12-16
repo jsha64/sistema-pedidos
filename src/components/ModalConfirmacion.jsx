@@ -1,4 +1,4 @@
-import Navbar from "./Navbar";
+import Button from "./Button";
 
 export const ModalConfirmacion = ({ visible, message, product }) => {
   if (!visible) return null;
@@ -15,7 +15,10 @@ export const ModalConfirmacion = ({ visible, message, product }) => {
               <strong>Producto:</strong> {product.name}
             </p>
             <p>{product.description}</p>
-            <Navbar />
+            <Button 
+              titulo="Ir al carrito"
+              to="/carrito"
+            />
           </>
         )}
       </div>

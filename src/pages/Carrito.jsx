@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Button from "../components/Button";
 
 export default function Carrito({ carrito }) {
   const carritoAgrupado = carrito.reduce((acc, item) => {
@@ -18,9 +19,10 @@ export default function Carrito({ carrito }) {
   return (
     <div style={{ padding: "20px" }}>
       
-      <button>
-        <Link to="/">Inicio</Link>
-      </button>
+      <Button
+        to="/"
+        titulo="Inicio"
+      />
 
       <h2>🛒 Carrito de Compras</h2>
 
@@ -31,17 +33,20 @@ export default function Carrito({ carrito }) {
           {listaFinal.map((item, index) => (
             <>
               <div key={index.id} className="carrito-item">
+                <input type="checkbox" name="" id="" />
+                <hr />
                 <h3>{item.name}</h3>
                 <p>{item.description}</p>
+                <p><strong>Precio del producto:</strong> {item.price}</p>
                 <p>Cantidad: {item.cantidad}</p>
-                <strong>Precio: ${item.subtotal}</strong>
+                <strong>Subtotal: ${item.subtotal}</strong>
               </div>
               <br />
             </>
           ))}
 
           <div className="total">
-            <strong> Total: {total}</strong>
+            <strong> Total: ${total}</strong>
           </div>
           
         </div>

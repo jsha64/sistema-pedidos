@@ -1,14 +1,11 @@
-import { Link } from "react-router-dom"
+import Button from "./Button"
 
 export default function Navbar({ carrito }) {
   return (
     <nav>
-        <button>
-            <Link to="/carrito">
-                Ir al pedido
-                {carrito}
-            </Link>
-        </button>
+      <Button to="/carrito">
+      </Button>
+      {carrito > 0 && <span>{carrito}</span>}
     </nav>
   )
 };

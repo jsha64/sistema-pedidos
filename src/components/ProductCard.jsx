@@ -1,3 +1,5 @@
+import Button from "./Button";
+
 export const ProductCard = ({ name, price, /*image*/ description, onAdd,
   pedidoConfirmacion }) => {
   
@@ -11,12 +13,14 @@ export const ProductCard = ({ name, price, /*image*/ description, onAdd,
 
       <strong>${price}</strong>
 
-      <button className="btn-agregar" onClick={() => {
+      <Button onAdd={onAdd} pedidoConfirmacion={pedidoConfirmacion} titulo="Agregar al pedido" />
+
+      {/* <button className="btn-agregar" onClick={() => {
           onAdd();             // Agrega al carrito
           pedidoConfirmacion(); // Muestra modal
         }}>
         Agregar al pedido
-      </button>
+      </button> */}
     </div>
   );
 }
