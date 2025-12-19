@@ -1,27 +1,17 @@
 import Nav from "../components/Nav";
-import { useState } from "react";
 import { ProductCard } from "../components/ProductCard";
 import { productos } from "../data/productos";
 import "../styles/product-card.css";
 import { ModalConfirmacion } from "../components/ModalConfirmacion"
+import useCarrito from "../hooks/useCarrito";
 
 export const Inicio = ({ carrito, setCarrito }) => {
-  const [modalVisible, setModalVisible] = useState(false);
-  const [productoAgregado, setProductoAgregado] = useState(null);
-
-  const pedidoConfirmacion = () => {
-    setModalVisible(true);
-    setTimeout(() => {
-      setModalVisible(false)
-      setProductoAgregado(null);
-    }, 5000);
-  };
-
-  const handleAdd = (producto) => {
-    setCarrito([...carrito,  producto]);
-    setProductoAgregado(producto);
-    pedidoConfirmacion();
-  }
+  const {
+    modalVisible,
+    productoAgregado,
+    handleAdd,
+    pedidoConfirmacion
+  } = useCarrito(carrito, setCarrito)
 
     return (
         <>
