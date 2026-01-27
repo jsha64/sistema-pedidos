@@ -1,11 +1,7 @@
-import Button from "./Button"
-
-export default function Navbar({ carrito }) {
+export default function Navbar({children}) {
   return (
-    <nav>
-      <Button to="/carrito">
-      </Button>
-      {carrito > 0 && <span>{carrito}</span>}
+    <nav className="navbar">
+      {children}
     </nav>
   )
 };
