@@ -1,5 +1,6 @@
 // import { Link } from "react-router-dom";
 import Button from "../components/Button";
+import InputLoginRegister from "../components/InputLoginRegister";
 
 export default function Carrito({ carrito }) {
   const carritoAgrupado = carrito.reduce((acc, item) => {
@@ -29,6 +30,7 @@ export default function Carrito({ carrito }) {
       {listaFinal.length === 0 ? (
         <p>Tu carrito está vacío.</p>
       ) : (
+      <>
         <div className="carrito-lista">
           {listaFinal.map((item, index) => (
             <>
@@ -48,8 +50,13 @@ export default function Carrito({ carrito }) {
           <div className="total">
             <strong> Total: ${total}</strong>
           </div>
-          
         </div>
+        <InputLoginRegister
+          className="input-enter"
+          type="button"
+          value="Confirmar Orden"
+        />
+      </>
       )}
     </div>
   );
