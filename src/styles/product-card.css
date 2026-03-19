@@ -1,7 +1,7 @@
 * {
   box-sizing: border-box;
   margin: 0;
-  background-color: #ebebeb;
+  background-color: #F8F7F5;
   font-family: 'Roboto';
 }
 
@@ -11,6 +11,9 @@ h5, h6 {
 
 h6 {
   color: #fca636;
+}
+h3, p {
+  background-color: #ffffff;
 }
 
 /* animacion modal carrito */
@@ -118,11 +121,25 @@ h6 {
 .carrito-lista {
   width: 100%;
   border: 1px solid #000;
-  padding: 1%;
+  padding: 6% 4% 0 4%;
 }
 .carrito-item {
-  width: 30%;
-  border: 1px solid #000;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  border-radius: 12px 12px;
+}
+.products-cards, .products-cantidad {
+  background-color: #ffffff;
+}
+.products-cards {
+  margin: 10%;
+}
+.products-cantidad {
+  display: flex;
+  align-items: center;
+  border-radius: 100%;
 }
 .total {
   width: 30%;
@@ -138,8 +155,9 @@ h6 {
 .div-nav {
   display: flex;
   width: 100%;
+  padding-top: 5%;
+  padding-left: 5%;
   justify-content: space-around;
-  padding-right: 70%;
 }
 .spanl, .spanr {
   padding-left: 130%;
@@ -183,6 +201,9 @@ h6 {
   color: #865701;
   opacity: calc(70%);
 }
+.div-input-enter {
+  padding: 5%;
+}
 .input-enter {
   background-color: #FB7E00;
   color: #ffffff;
@@ -200,4 +221,15 @@ h6 {
   background-color: #ffffff;
   border-radius: 10px;
   height: 50px;
+}
+
+.div-nav-c {
+  display: flex;
+  width: 100%;
+  padding: 5%;
+  border: solid 1px #929292;
+}
+.spanc {
+  display:flex;
+  padding-left: 20%;
 }

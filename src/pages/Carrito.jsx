@@ -1,5 +1,6 @@
 // import { Link } from "react-router-dom";
-import Button from "../components/Button";
+// import Button from "../components/Button";
+import ButtonBack from "../components/ButtonBack";
 import InputLoginRegister from "../components/InputLoginRegister";
 
 export default function Carrito({ carrito }) {
@@ -18,32 +19,35 @@ export default function Carrito({ carrito }) {
   const total = listaFinal.reduce((acc, item) => acc + item.subtotal, 0);
 
   return (
-    <div style={{ padding: "20px" }}>
-      
-      <Button
-        to="/"
-        titulo="Inicio"
-      />
+    <>
 
-      <h2>🛒 Carrito de Compras</h2>
-
+      <div className="div-nav-c">
+        <ButtonBack />
+        <h4 className="spanc">Tu Carrito de compras</h4>
+      </div>
       {listaFinal.length === 0 ? (
         <p>Tu carrito está vacío.</p>
       ) : (
       <>
         <div className="carrito-lista">
+          <h4>Elementos</h4>
           {listaFinal.map((item, index) => (
             <>
               <div key={index.id} className="carrito-item">
-                <input type="checkbox" name="" id="" />
-                <hr />
-                <h3>{item.name}</h3>
-                <p>{item.description}</p>
-                <p><strong>Precio del producto:</strong> {item.price}</p>
-                <p>Cantidad: {item.cantidad}</p>
-                <strong>Subtotal: ${item.subtotal}</strong>
+                <div></div>
+                <div className="products-cards">
+                  <h3>{item.name}</h3>
+                  <p>{item.description}</p>
+                  <p>${item.price}</p>
+                </div>
+                <div className="products-cantidad">
+                  -
+                  <p>{item.cantidad}</p>
+                  +
+                </div>
               </div>
               <br />
+              <strong>Subtotal: ${item.subtotal}</strong>
             </>
           ))}
 
@@ -51,13 +55,15 @@ export default function Carrito({ carrito }) {
             <strong> Total: ${total}</strong>
           </div>
         </div>
-        <InputLoginRegister
-          className="input-enter"
-          type="button"
-          value="Confirmar Orden"
-        />
+        <div className="div-input-enter">
+          <InputLoginRegister
+            className="input-enter"
+            type="button"
+            value="Confirmar Orden"
+          />
+        </div>
       </>
       )}
-    </div>
+    </>
   );
 }
