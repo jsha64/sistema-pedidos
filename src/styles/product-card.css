@@ -2,15 +2,11 @@
   box-sizing: border-box;
   margin: 0;
   background-color: #F8F7F5;
-  font-family: 'Roboto';
+  font-family: 'Plus Jakarta Sans';
 }
 
 h5, h6 {
   font-weight: normal;
-}
-
-h6 {
-  color: #fca636;
 }
 h3, p {
   background-color: #ffffff;
@@ -46,8 +42,8 @@ h3, p {
 }
 
 @font-face {
-  font-family: 'Roboto';
-  src: url('/src/fonts/Roboto-VariableFont_wdth\,wght.ttf');
+  font-family: 'Plus Jakarta Sans';
+  src: url('/src/fonts/PlusJakartaSans-VariableFont_wght.ttf');
 }
 
 /* principal */
@@ -120,15 +116,26 @@ h3, p {
 }
 .carrito-lista {
   width: 100%;
-  border: 1px solid #000;
+  height: max-content;
   padding: 6% 4% 0 4%;
+}
+.carrito-list {
+  padding: initial;
+}
+.title-apartados {
+  background-color: #F8F7F5;
+  margin-bottom: 3%;
+}
+.title-apartados-pedido {
+  background-color: #F8F7F5;
 }
 .carrito-item {
   background-color: #ffffff;
   display: flex;
   flex-direction: row;
   width: 100%;
-  border-radius: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid #ffffff;
 }
 .products-cards, .products-cantidad {
   background-color: #ffffff;
@@ -138,13 +145,57 @@ h3, p {
 }
 .products-cantidad {
   display: flex;
+  justify-content: space-around;
   align-items: center;
   border-radius: 100%;
+  width: 50%;
+  font-weight: 500;
+}
+.boton-mas-menos {
+  width: 32px;
+  height: 32px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 50%;
+}
+.boton-mas {
+  color:#F48C25;
+}
+.div-subtotal {
+  border-radius: 12px;
+  background-color: white;
+  padding: 3% 0;
+}
+.subtotal, .tarifa, .total{
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin: 4% 4%;
+  color: #9C7349;
+  background-color: #ffffff;
+  border-radius: 100px;
+}
+.subtotal-tarifa {
+  color: #000000;
+}
+.rayita {
+  width: 100%;
+  height: 1px;
+  background-color: #F3F4F6;
 }
 .total {
-  width: 30%;
-  height: 30px;
-  border: 1px solid #000;
+  color: #F48C25;
+  font-size: 18px;
+  margin-top: 5%;
+}
+.total-name {
+  color: initial;
+  font-weight: bold;
+  font-size: 18px;
+}
+.total-name, .total-price {
+  background-color: #ffffff;
 }
 
 /* login */
@@ -155,18 +206,14 @@ h3, p {
 .div-nav {
   display: flex;
   width: 100%;
-  padding-top: 5%;
-  padding-left: 5%;
-  justify-content: space-around;
 }
 .spanl, .spanr {
-  padding-left: 130%;
+  padding-left: 35%;
 }
 .login-content, .register-content {
   width: 90%;
   height: 100vh;
-  margin: 0 6% 0 6%;
-  padding: 0 6% 0 6%;
+  margin: 0 7% 0 7%;
   align-items: center;
 }
 .h1-registro {
@@ -174,6 +221,12 @@ h3, p {
 }
 .anticon-left path {
   color: #000;
+}
+.anticon-arrow-right {
+  margin-left: 2%;
+}
+.anticon-arrow-right svg {
+  background-color: #F48C25;
 }
 .inputs-login {
   width: 100%;
@@ -202,12 +255,29 @@ h3, p {
   opacity: calc(70%);
 }
 .div-input-enter {
-  padding: 5%;
+  background-color: #ffffff;
+  padding: 4%;
+}
+.total-precio {
+  background-color: #ffffff;
+  margin-bottom: 4%;
+  display: flex;
+  flex-direction: column;
+}
+.total-precio-h6, .total-precio-span {
+  background-color: #ffffff;
+  color: #6B7280;
+}
+.total-precio-span {
+  color: initial;
 }
 .input-enter {
-  background-color: #FB7E00;
+  background-color: #F48C25;
   color: #ffffff;
   font-weight: 700;
+}
+.span-icon {
+  background-color: #F48C25;
 }
 .div-button-google {
   width: 100%;

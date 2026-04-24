@@ -38,7 +38,7 @@ export default function Register() {
                 />
             </div>
             <div className="inputs-login">
-                <h5>Contrasena</h5>
+                <h5>Contraseña</h5>
                 <InputLoginRegister
                     className="input-correo"
                     placeholder="e.e ejemplo@email.com"

@@ -3,16 +3,8 @@ import { ProductCard } from "../components/ProductCard";
 import { productos } from "../data/productos";
 import "../styles/product-card.css";
 import { ModalConfirmacion } from "../components/ModalConfirmacion"
-import useCarrito from "../hooks/useCarrito";
 
-export const Inicio = ({ carrito, setCarrito }) => {
-  const {
-    modalVisible,
-    productoAgregado,
-    handleAdd,
-    pedidoConfirmacion
-  } = useCarrito(carrito, setCarrito)
-
+export const Inicio = ({ carrito, modalVisible, productoAgregado, handleAdd }) => {
     return (
         <>
         <ModalConfirmacion
@@ -28,7 +20,6 @@ export const Inicio = ({ carrito, setCarrito }) => {
                 key={p.id}
                 {...p}
                 onAdd={() => handleAdd(p)}
-                pedidoConfirmacion={pedidoConfirmacion}
               />
             ))}
           </div> 

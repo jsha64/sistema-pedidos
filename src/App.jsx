@@ -1,13 +1,13 @@
-import { useState } from "react";
 import AppRoutes from "./routes/AppRoutes";
+import useCarrito from "./hooks/useCarrito";
 
-export default function App(){
-  const [carrito, setCarrito] = useState([]);
+export default function App() {
+  const carritoData = useCarrito();
 
   return (
     <>
-      <AppRoutes carrito={carrito} setCarrito={setCarrito} />
+      <AppRoutes {...carritoData} />
     </>
   );
-};
+}
 

@@ -4,8 +4,18 @@ export default function InputLoginRegister({
     placeholder,
     onChange,
     onClick,
-    className
+    className,
+    icon
 }) {
+
+    if (type === "button") {
+        return (
+            <button className={className} onClick={onClick}>
+                {value}
+                {icon && <>{icon}</>}
+            </button>
+        )
+    } 
 
     return (
         <input 
